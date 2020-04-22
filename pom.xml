@@ -62,9 +62,9 @@
     <repositories>
         <!--配置nexus私有仓库-->
         <repository>
-            <id>nexus</id>
-            <name>Nexus Repository</name>
-            <url>http://lyw166888.xyz:8081/repository/maven-public/</url>
+            <id>github</id>
+            <name>Github Packages</name>
+            <url>https://maven.pkg.github.com/Loven-iToken/iToken-dependencies</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
