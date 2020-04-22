@@ -45,6 +45,8 @@ jobs:
           else
             docker build . --file Dockerfile
           fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
   # Push image to GitHub Packages.
   # See also https://docs.docker.com/docker-hub/builds/
@@ -57,10 +59,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Cache Maven packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
       - name: Package
         run: |
           mvn clean package -Dmaven.test.skip
           cp target/*.jar docker/
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Build image
         run: docker build . --tag $IMAGE_NAME
 
