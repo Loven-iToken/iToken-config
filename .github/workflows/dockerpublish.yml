@@ -39,6 +39,7 @@ jobs:
         run: |
           mvn clean package
           cp target/*.jar docker/
+          cd docker
           if [ -f docker-compose.test.yml ]; then
             docker-compose --file docker-compose.test.yml build
             docker-compose --file docker-compose.test.yml run sut
@@ -73,6 +74,7 @@ jobs:
         run: |
           mvn clean package -Dmaven.test.skip
           cp target/*.jar docker/
+          cd docker
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
       - name: Build image
