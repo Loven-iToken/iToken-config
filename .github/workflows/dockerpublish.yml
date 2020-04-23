@@ -81,10 +81,6 @@ jobs:
 
       - name: Push image
         run: |
-          chmod 777 /etc/docker
-          cp docker/daemon.json /etc/docker/
-          systemctl daemon-reload
-          systemctl restart docker
           IMAGE_ID=111.229.156.148:5000/$IMAGE_NAME
           
           # Change all uppercase to lowercase
