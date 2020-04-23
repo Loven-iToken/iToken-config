@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: iToken-zuul
+server:
+  port: 9000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  routes:
+    api-a:
+      path: /api/a/**
+      serviceId: iToken-service-admin
