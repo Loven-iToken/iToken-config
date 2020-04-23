@@ -1,2 +1,2 @@
 # iToken-config
-a springcloud config server
+springcloud config server
