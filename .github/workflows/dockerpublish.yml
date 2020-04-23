@@ -81,6 +81,7 @@ jobs:
 
       - name: Push image
         run: |
+          chmod 777 /etc/docker
           cp docker/daemon.json /etc/docker/
           systemctl daemon-reload
           systemctl restart docker
