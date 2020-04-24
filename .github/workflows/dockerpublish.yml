@@ -81,7 +81,7 @@ jobs:
 
       - name: Push image
         run: |
-          IMAGE_ID=111.229.156.148:5000/$IMAGE_NAME
+          IMAGE_ID=lyw166888.xyz:5000/$IMAGE_NAME
           
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
@@ -100,5 +100,3 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
-        env:
-          registry: 111.229.156.148:5000
